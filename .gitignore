@@ -1,0 +1,10 @@
+### Editor ###
+## Vim & Emacs temp files:
+.*sw[op]
+*~
+
+## VS Code Config files:
+.vscode
+
+## JetBrains Config
+.idea
