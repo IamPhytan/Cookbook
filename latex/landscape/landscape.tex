@@ -1,0 +1,33 @@
+\documentclass[12pt]{article}
+
+% For landscape environment
+\usepackage{pdflscape}
+
+% For lorem ipsum
+\usepackage{lipsum}
+
+\title{Landscape}
+\author{Damien LaRocque}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+This page is in \LaTeX{} and in portrait mode!
+
+\lipsum[1-2]
+
+\begin{landscape}
+    \section{Landscape}
+
+    This page is in \LaTeX, and in landscape mode!
+
+    \lipsum[3-5]
+\end{landscape}
+
+\section{Back to portrait}
+
+\lipsum[42-44]
+
+\end{document}
