@@ -1,0 +1,45 @@
+% !TEX program = LuaLaTeX
+% !TEX encoding = UTF-8
+% !TEX options = -synctex=1 -interaction=nonstopmode -file-line-error "%DOC%"
+
+\documentclass{beamer}
+
+% Title page information
+\title{This is a Beamer}
+\author{Damien LaRocque}
+\institute{Institute FooBar}
+\date{1970}
+
+% For video
+\usepackage{multimedia}
+
+\begin{document}
+
+% First beamer page
+\frame{\titlepage}
+
+% Page 1
+\begin{frame}
+
+    \frametitle{This is a new frame}
+
+    This text in the new frame
+
+\end{frame}
+
+% Page 2
+\begin{frame}
+
+    \movie[loop,autostart]{\includegraphics[width=\textwidth]{./lidar.jpg}}{./lidar.mp4}
+
+\end{frame}
+
+
+\end{document}
+
+
+
+
+
+
+
