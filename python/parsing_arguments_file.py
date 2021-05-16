@@ -31,7 +31,6 @@ def parse_arguments(args_to_parse):
 def run_parser(args_to_parse):
     print(f"{sys.executable} {__file__} {args_to_parse}")
     args = parse_arguments(args_to_parse)
-    args_dict = args.__dict__
 
     # Greet with name (yes, name is required)
     # If name has multiple words, join them together / convert to string
@@ -39,6 +38,7 @@ def run_parser(args_to_parse):
     print(f"Hello {name} !")
 
     # Maximal length of key in args
+    args_dict = args.__dict__
     argkeymax = len(max(args_dict.keys(), key=lambda x: len(x)))
 
     # Print args
@@ -57,4 +57,4 @@ if __name__ == "__main__":
     run_parser("-n Bob --optional 2")
     run_parser("-n Charlie --pythonic")
     run_parser("-n King Arthur --pythonic -l 1 -l 2 -l 3 -l 54")
-    run_parser("-n Sir Lancelot -f testfile.txt -optional -N 28 --pythonic")
+    run_parser("-n Sir Lancelot -f testfile.txt --optional -N 28 --pythonic")
