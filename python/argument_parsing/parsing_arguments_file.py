@@ -3,7 +3,7 @@ from os import O_APPEND
 import sys
 
 
-def parse_arguments(args_to_parse):
+def parse_arguments(args_to_parse: str) -> argparse.Namespace:
     """Parse arguments given during the execution of the script"""
     parser = argparse.ArgumentParser(description="Args test : Show args that are given on script execution")
 
@@ -28,7 +28,7 @@ def parse_arguments(args_to_parse):
     return parser.parse_args(args_to_parse.split())
 
 
-def run_parser(args_to_parse):
+def run_parser(args_to_parse: str):
     print(f"{sys.executable} {__file__} {args_to_parse}")
     args = parse_arguments(args_to_parse)
 
