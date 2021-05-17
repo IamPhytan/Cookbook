@@ -24,6 +24,7 @@ all_numbers = set(range(min_number, max_number + 1))
 not_included = all_numbers - merged_intervals_elements
 print("Not included :", not_included)
 
+
 #
 #  Merge intervals less naively
 #
