@@ -5,7 +5,7 @@ import cv2
 # Returns the image in a Numpy array
 img = cv2.imread("opencv_snippets/images/westernbrookpond.jpg", cv2.IMREAD_COLOR)
 
-# Show image shape
+# Show image shape (works like any numpy array)
 # Height, Width, Number of channels (3 in color, 1 in grayscale)
 img_shape = img.shape
 print(img_shape)
