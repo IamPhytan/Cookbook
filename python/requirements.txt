@@ -1,3 +1,6 @@
+numpy
+opencv-python
+
 # Dev
 ipython
 black
