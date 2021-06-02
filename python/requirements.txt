@@ -1,6 +1,10 @@
+# Scientific
 numpy
-opencv-python
 matplotlib
+sympy
+
+# Vision
+opencv-python
 
 # Dev
 ipython
