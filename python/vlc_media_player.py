@@ -100,7 +100,7 @@ class VLCMediaPlayer:
 
 class VLCController:
     """VLC Controller
-    Control a VLC Media Player
+    Control a VLC Media Player instance
     """
 
     def __init__(self, url="https://www.youtube.com/watch?v=xtp4msMYi9s", DELAY=1):
