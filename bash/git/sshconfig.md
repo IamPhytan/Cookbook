@@ -3,10 +3,8 @@
 To create a new ssh key :
 
 ```sh
-ssh-keygen -t rsa -b 4096 -C "email@example.com"
+ssh-keygen -t rsa -b 4096 -C "email@example.com" -f ~/.ssh/server.key
 ```
-
-Save in `~/.ssh/server.key`
 
 And in `~/.ssh/config` :
 
