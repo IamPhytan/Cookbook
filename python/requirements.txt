@@ -2,6 +2,10 @@
 numpy
 matplotlib
 sympy
+pandas
+
+# Data visualization
+ipyvizzu
 
 # Vision
 opencv-python
