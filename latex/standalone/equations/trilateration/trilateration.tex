@@ -1,0 +1,106 @@
+\documentclass[preview,border=12pt]{standalone}
+\usepackage{amsmath}
+\usepackage{cancel}
+
+\begin{document}
+
+We start from the distance equations, where \(d_N\) is the distance between the landmark \(\left(x_N, y_N, z_N\right)\) and the point to localize \(\left(x, y, z\right)\):
+\begin{align*}
+    {d_A}^2 & = \left(x_A - x\right)^2 + \left(y_A - y\right)^2 + \left(z_A - z\right)^2 \\
+    {d_B}^2 & = \left(x_B - x\right)^2 + \left(y_B - y\right)^2 + \left(z_B - z\right)^2 \\
+    {d_C}^2 & = \left(x_C - x\right)^2 + \left(y_C - y\right)^2 + \left(z_C - z\right)^2
+\end{align*}
+
+By expanding the squares,
+\begin{align*}
+    {d_A}^2 & = \left({x_A}^2 - 2 x_A x + x^2\right) + \left({y_A}^2 - 2 y_A y + y^2\right) + \left({z_A}^2 - 2 z_A z + z^2\right) \\
+    {d_B}^2 & = \left({x_B}^2 - 2 x_B x + x^2\right) + \left({y_B}^2 - 2 y_B y + y^2\right) + \left({z_B}^2 - 2 z_B z + z^2\right) \\
+    {d_C}^2 & = \left({x_C}^2 - 2 x_C x + x^2\right) + \left({y_C}^2 - 2 y_C y + y^2\right) + \left({z_C}^2 - 2 z_C z + z^2\right)
+\end{align*}
+
+And by grouping some terms together,
+\begin{align*}
+    {d_A}^2 - \left({x_A}^2 + {y_A}^2 + {z_A}^2 \right) & = -2 \left(x_A x + y_A y + z_A z\right) + x^2 + y^2 + z^2 \\
+    {d_B}^2 - \left({x_B}^2 + {y_B}^2 + {z_B}^2 \right) & = -2 \left(x_B x + y_B y + z_B z\right) + x^2 + y^2 + z^2 \\
+    {d_C}^2 - \left({x_C}^2 + {y_C}^2 + {z_C}^2 \right) & = -2 \left(x_C x + y_C y + z_C z\right) + x^2 + y^2 + z^2
+\end{align*}
+
+The left term of each equation does not depend on the point \(\left(x, y, z\right)\), we can therefore simplify the equation by creating a new notation \(d_N\) :
+\begin{align*}
+    \begin{bmatrix}
+        d'_A \\
+        d'_B \\
+        d'_C \\
+    \end{bmatrix} & =
+    \begin{bmatrix}
+        {d_A}^2 - \left({x_A}^2 + {y_A}^2 + {z_A}^2 \right) \\
+        {d_B}^2 - \left({x_B}^2 + {y_B}^2 + {z_B}^2 \right) \\
+        {d_C}^2 - \left({x_C}^2 + {y_C}^2 + {z_C}^2 \right) \\
+    \end{bmatrix}
+\end{align*}
+\begin{align}
+    d'_A & = -2 \left(x_A x + y_A y + z_A z\right) + x^2 + y^2 + z^2 \label{eq:sysA} \\
+    d'_B & = -2 \left(x_B x + y_B y + z_B z\right) + x^2 + y^2 + z^2 \label{eq:sysB} \\
+    d'_C & = -2 \left(x_C x + y_C y + z_C z\right) + x^2 + y^2 + z^2 \label{eq:sysC}
+\end{align}
+
+We want to cancel \(x^2 + y^2 + z^2\) from (\ref{eq:sysA}), (\ref{eq:sysB}), and (\ref{eq:sysC}). For that, we will do the following differences : (\ref{eq:sysA}) - (\ref{eq:sysB}), (\ref{eq:sysB}) - (\ref{eq:sysC}), (\ref{eq:sysC}) - (\ref{eq:sysA}).
+\begin{align*}
+    d'_A - d'_B & = -2 \left[\left(x_A x + y_A y + z_A z\right) - \left(x_B x + y_B y + z_B z\right)\right] \\
+    d'_B - d'_A & = -2 \left[\left(x_B x + y_B y + z_B z\right) - \left(x_A x + y_A y + z_A z\right)\right] \\
+    d'_C - d'_C & = -2 \left[\left(x_C x + y_C y + z_C z\right) - \left(x_C x + y_C y + z_C z\right)\right]
+\end{align*}
+\begin{align*}
+    d'_A - d'_B & = -2 \left[\left(x_A - x_B\right)x + \left(y_A - y_B\right)y + \left(z_A - z_B\right)z\right] \\
+    d'_B - d'_C & = -2 \left[\left(x_B - x_C\right)x + \left(y_B - y_C\right)y + \left(z_B - z_C\right)z\right] \\
+    d'_C - d'_A & = -2 \left[\left(x_C - x_A\right)x + \left(y_A - y_B\right)y + \left(z_C - z_A\right)z\right]
+\end{align*}
+\begin{align*}
+    - \frac{d'_A - d'_B}{2} & = \left(x_A - x_B\right)x + \left(y_A - y_B\right)y + \left(z_A - z_B\right)z \\
+    - \frac{d'_B - d'_C}{2} & = \left(x_B - x_C\right)x + \left(y_B - y_C\right)y + \left(z_B - z_C\right)z \\
+    - \frac{d'_C - d'_A}{2} & = \left(x_C - x_A\right)x + \left(y_A - y_B\right)y + \left(z_C - z_A\right)z
+\end{align*}
+
+This notation can be rewritten with matrices:
+\begin{align*}
+    \begin{bmatrix}
+        x_A - x_B & y_A - y_B & z_A - z_B \\
+        x_B - x_C & y_B - y_C & z_B - z_C \\
+        x_C - x_A & y_A - y_B & z_C - z_A \\
+    \end{bmatrix}
+    \begin{bmatrix}
+        x \\
+        y \\
+        z \\
+    \end{bmatrix}
+                 & =
+    \frac{-1}{2}
+    \begin{bmatrix}
+        d'_A - d'_B \\
+        d'_B - d'_C \\
+        d'_C - d'_A \\
+    \end{bmatrix}  \\
+    \mathbf{A} x & = \mathbf{B}
+\end{align*}
+
+If the rank of the first matrix \(\mathbf{A}\) is at least 3, we can solve this system of equations with simple matrix solving techniques.
+
+% \begin{align*}
+%     L_1 \cdot \diff{\omega_2} \cos \left( \theta_2 \right) \cdot \diff{A_1}                                                                                      & = \diff{E_2} \cdot \diff{A_2} \\
+%     L_1 \cdot \diff{\omega_2} \cos \left( \theta_2 \right) \cdot \frac{\diff{A_1}}{\diff{A_2}}                                                                   & = \diff{E_2}                  \\
+%     L_1 \cdot \frac{\diff{A_2} \cdot \cos \left( \theta_2 \right)}{r^2} \cdot \cos \left( \theta_2 \right) \cdot \frac{\diff{A_1}}{\diff{A_2}}                   & = \diff{E_2}                  \\
+%     L_1 \cdot \frac{\cancel{\diff{A_2}} \cdot \cos \left( \theta_2 \right)}{r^2} \cdot \cos \left( \theta_2 \right) \cdot \frac{\diff{A_1}}{\cancel{\diff{A_2}}} & = \diff{E_2}                  \\
+%     \frac{ L_1 \cdot \cos \left( \theta_2 \right) \cdot \cos \left( \theta_2 \right) \cdot \diff{A_1}}{r^2}                                                      & = \diff{E_2}                  \\
+%     \frac{ L_1 \cdot \cos^2 \left( \theta_2 \right) \cdot \diff{A_1}}{r^2}                                                                                       & = \diff{E_2}
+% \end{align*}
+
+% Pour $\theta = \theta_2$ et $r = h / \cos \left(\theta\right)$:
+
+% \begin{align*}
+%     \frac{ L_1 \cdot \cos^2 \left( \theta \right) \cdot \diff{A_1}}{r^2}                                          & = \diff{E_2} \\
+%     \frac{ L_1 \cdot \cos^2 \left( \theta \right) \cdot \diff{A_1}}{\left[h / \cos \left(\theta\right) \right]^2} & = \diff{E_2} \\
+%     \frac{ L_1 \cdot \cos^4 \left( \theta \right) \cdot \diff{A_1}}{h^2}                                          & = \diff{E_2}
+% \end{align*}
+
+\end{document}
+
