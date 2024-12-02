@@ -1,3 +1,5 @@
+use itertools::Itertools;
+
 fn main() {
     let a: Vec<i32>;
     let b: Vec<u32>;
@@ -21,4 +23,8 @@ fn main() {
         })
         .collect();
     println!("{:?}", c);
+
+    let nums: Vec<u8> = vec![5, 4, 6, 3, 9, 8, 1];
+    let chars: Vec<char> = nums.iter().sorted().map(|x| (x + 64) as char).collect();
+    println!("{:?}\n{:?}", nums, chars);
 }
